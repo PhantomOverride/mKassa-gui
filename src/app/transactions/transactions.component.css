@@ -1,0 +1,45 @@
+.container-transactions {
+	clear:both;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 0.3em;
+  /*  grid-auto-rows: 300px;*/
+  grid-template-areas: 
+    "a a a a a"
+    "a a a a a";
+  align-items: start;
+}
+
+.transaction-method{
+	float:right;
+	margin-right:0.1em;
+}
+
+.transaction-amountPaid {
+	float:right;
+	background-color:lightgreen;
+}
+
+.transaction-date {
+	display:block;
+	background-color:#ddd;
+}
+
+.transaction-item {
+	grid-area: "a";
+	background-color:#efefef;
+}
+
+.transaction-products{
+	clear:both;
+}
+
+.product-row {
+	
+}
+
+.transaction-id{
+	display:block;
+	background-color:#ddd;
+	margin-top:0.2em;
+}

@@ -1,0 +1,35 @@
+<div *ngIf="stageConfirm==true">
+	<div class="cart-confirmation">
+		<div class="payment-method-button accept-button" (click)="checkout()">Confirm</div>
+		<div class="payment-method-button abort-button" (click)="initCheckout()">Back</div>
+	</div>
+</div>
+
+<div *ngIf="stageCheckout==true">
+	<div class="cart-payment-method">
+		<div>
+			<div class="cart-sum">Total: {{this.sum}}</div>
+		</div>
+		<div class="method-card payment-method-button" (click)="setPayment('card'); initConfirm()">Card</div>
+		<div class="method-cash payment-method-button" (click)="setPayment('cash'); initConfirm()">Cash</div>
+		<div class="abort-button payment-method-button" (click)="initShopping()">Back</div>
+	</div>
+</div>
+
+<div *ngIf="stageShop==true">
+	<div *ngIf="products">
+		<div class="payment-button" (click)="initCheckout()">
+			<span>Checkout</span>
+		</div>
+		<div>
+			<div class="cart-sum">Total: {{this.sum}}</div>
+		</div>
+		<div *ngFor="let product of products">
+			<div class="cart-item">
+				<span class="cart-item-name">{{product.name}}</span>
+		    	<span class="cart-item-remove" (click)="removeItem(product)">[X]</span>
+		    	<span class="cart-item-price">{{product.price}}kr</span>
+	    	</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+  <div id="container-products">
+  <div class="product-tile" *ngFor="let product of products" (click)="onSelect(product)" [class.selected]="product === selectedProduct">
+  		<div>
+    	<span class="product-tile-name">{{product.name}}</span>
+    	<span class="product-tile-price">{{product.price}}kr</span>
+    	</div>
+    	<img class="product-tile-image" src="{{product.imageUrl}}">
+
+  </div>
+</div>
+
+<div id="container-cart">
+<app-cart [products]="cart"></app-cart>
+</div>
