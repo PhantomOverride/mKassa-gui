@@ -26,9 +26,22 @@ export class ProductService {
   	return this.http.get<Product[]>(this.productsUrl);
   }
 
+  createProduct(p){
+    return this.http.post<Product>(this.productsUrl, p).subscribe();
+  }
+
+  putProduct(p) {
+    return this.http.put<Product>(this.productsUrl + "/" + p._id, p).subscribe();
+  }
+
+  deleteProduct(p) {
+    return this.http.delete<Product>(this.productsUrl + "/" + p._id, p).subscribe();
+  }
+
   postTransaction(t) {
   	return this.http.post<Transaction>(this.transactionsUrl,t).subscribe();
   }
+
 
   private log(message: string) {
   	this.messageService.add('HeroService: ' + message);

@@ -1,0 +1,62 @@
+.cart-item-name {
+	font-size: 22pt;
+	float:left;
+}
+
+.cart-item-price {
+	font-size: 22pt;
+	float:right;
+	color: black;
+	font-weight: bold;
+	background-color: lightgreen;
+}
+
+.attribute {
+	overflow:hidden;
+	width:90%;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+	padding-left: 0.2em;
+	margin:0px;
+	margin-bottom:0.5em;
+}
+
+
+.save-button {
+	width: 100%;
+	background-color: lightgreen;
+	font-size: 26pt;
+	height:1.3em;
+	padding: 0 auto;
+	text-align: center;
+	color: black;
+	margin-bottom: 0.5em;
+}
+
+.save-text {
+	vertical-align: middle;
+}
+
+.delete-button {
+	width: 50%;
+	background-color: red;
+	font-size: 26pt;
+	height:2.5em;
+	padding: 0.2em;
+	text-align: center;
+	color: black;
+	margin: 0 auto;
+	margin-top: 2em;
+}
+
+.add-button {
+	width: 50%;
+	background-color: lightgreen;
+	font-size: 26pt;
+	height:2.5em;
+	padding: 0.2em;
+	text-align: center;
+	color: black;
+	margin: 0 auto;
+	margin-top: 2em;
+}

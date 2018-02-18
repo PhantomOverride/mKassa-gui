@@ -41,6 +41,14 @@ body, input[text], button {
 	width:30%;
 }
 
+#container-product-detail {
+	float:right;
+	box-sizing: border-box;
+	margin:0px;
+	padding:0.5em;
+	width:30%;
+}
+
 #header {
 	background-color: #ddd;
 	padding:1em;

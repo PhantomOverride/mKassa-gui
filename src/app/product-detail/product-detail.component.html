@@ -1,9 +1,41 @@
 <div *ngIf="product">
 	<h2>{{ product.name | uppercase }} Details</h2>
-	<div><span>id: </span>{{product.id}}</div>
+
+	<div class="save-button" (click)="save()">
+			<span class="save-text">Save</span>
+	</div>
+
+	<div><span>id: </span>{{product._id}}</div>
 	<div>
-	  <label>name:
+		<div class="attribute">
+	  <label>Name:
 	    <input [(ngModel)]="product.name" placeholder="name">
 	  </label>
 	</div>
+
+	<div class="attribute">
+	  <label>Price:
+	    <input [(ngModel)]="product.price" placeholder="9001">
+	  </label>
+	</div>
+
+	<div class="attribute">
+	  <label>Image URL:
+	    <input [(ngModel)]="product.imageUrl" placeholder="/assets/products/sample.png">
+	  </label>
+	  </div>
+
+
+	  <div class="attribute">
+	  <label>Category:
+	    <input [(ngModel)]="product.category" placeholder="None">
+	  </label>
+	</div>
+	<div class="delete-button" (click)="delete()">
+		Delete Product
+	</div>
+	</div>
+</div>
+<div class="add-button" (click)="add()">
+		New Product
 </div>

@@ -16,6 +16,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { CartComponent } from './cart/cart.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { ProductsEditComponent } from './products-edit/products-edit.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AppRoutingModule } from './/app-routing.module';
     ProductDetailComponent,
     MessagesComponent,
     CartComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    ProductsEditComponent
   ],
   imports: [
     BrowserModule,
