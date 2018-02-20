@@ -9,6 +9,13 @@ import { Product } from '../product';
 import { Transaction } from '../transaction';
 import { ProductService } from '../product.service';
 
+import qz from 'qz-tray';
+import KEYUTIL from 'jsrsasign';
+import stob64 from 'jsrsasign';
+import hextorstr from 'jsrsasign';
+//import RSVP from 'rsvp';
+//import rsvp from 'rsvp';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -169,11 +176,14 @@ export class CartComponent implements OnInit, DoCheck {
       return function (resolve, reject) {
           try {
               //var pk = new RSAKey();
-              var pk = KEYUTIL.getKey(privateKey);
+              //console.log(KEYUTIL);
+              var pk = KEYUTIL.KEYUTIL.getKey(privateKey);
               //pk.readPrivateKeyFromPEMString(strip(privateKey));
-              var hex = pk.signString(toSign, 'sha1');
-              console.log("DEBUG: \n\n" + stob64(hextorstr(hex)));
-              resolve(stob64(hextorstr(hex)));
+              //console.log(pk);
+              //var hex = pk.signString(toSign, 'sha1');
+              var hex = pk.sign(toSign, 'sha1');
+              //console.log("DEBUG: \n\n" + stob64(hextorstr(hex)));
+              resolve(stob64.stob64(hextorstr.hextorstr(hex)));
           } catch (err) {
               console.error(err);
               reject(err);

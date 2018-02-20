@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input, DoCheck } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 //import { Product } from '../product';
 
@@ -18,7 +18,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-detail.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ProductDetailComponent implements OnInit, DoCheck {
+export class ProductDetailComponent implements OnInit {
 
   @Input() product: Product;
 
