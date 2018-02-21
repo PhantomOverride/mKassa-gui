@@ -202,7 +202,7 @@ export class CartComponent implements OnInit, DoCheck {
 
   qz.websocket.connect().then(function() {
       //var config = qz.configs.create( { file: "/tmp/test.txt" } );
-      var config = qz.configs.create("Metapace T-25", {encoding:'UTF-8'});
+      var config = qz.configs.create("metapace", {encoding:'UTF-8'});
       
       //var data = ['test\n','etc\n'];
       qz.print(config,data).catch(function(e){ console.error(e); });
