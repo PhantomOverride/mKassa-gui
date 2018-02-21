@@ -99,16 +99,23 @@ export class CartComponent implements OnInit, DoCheck {
           name_length = element.name.length;
         }
       });
+      if(name_length > 10){
+        name_length = 10;
+      }
 
       var total = 0;
       // List all items
       for (var key in products) {
         var el = products[key];
+        var productname = el.name;
+        if(productname.length > 10){
+          productname = productname.substring(0, 11);
+        }
         var used_width = 0;
-        var name_ln = (name_length - el.name.length) + 4;
+        var name_ln = (name_length - productname.length) + 4;
 
         data[i++] = '\x1B' + '\x61' + '\x30'; // left align
-        data[i++] = el.name;
+        data[i++] = productname;
         data[i++] = Array(name_ln).join(' ');;
         var tmp = '1' + 'st' + ' * ' + el.price + 'kr';
         data[i++] = tmp;
