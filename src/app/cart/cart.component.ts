@@ -142,7 +142,7 @@ export class CartComponent implements OnInit, DoCheck {
       data[i++] = '\x0A';                   // line break
       data[i++] = '------------------------------------------' + '\x0A'; // horizontal rule + line break
       data[i++] = '\x1B' + '\x61' + '\x32', // right align
-      data[i++] = 'Total summa: ' + price + 'kr';
+      data[i++] = 'Total summa: ' + total + 'kr';
       data[i++] = '\x0A';                   // line break
       data[i++] = '\x0A';                   // line break
       data[i++] = 'Org-nummer: 802460-7155'
