@@ -207,6 +207,10 @@ export class CartComponent implements OnInit, DoCheck {
       //var data = ['test\n','etc\n'];
       qz.print(config,data).catch(function(e){ console.error(e); });
     });
+
+    window.setTimeout(function(){
+        qz.websocket.disconnect();
+      },1000);
 }
 
   removeItem(product){
