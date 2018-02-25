@@ -237,6 +237,7 @@ export class CartComponent implements OnInit, DoCheck {
   	this.stageCheckout = true;
   	this.stageShop = false;
   	this.stageConfirm = false;
+    window.scrollTo(0, 0);
   }
 
   initConfirm(){

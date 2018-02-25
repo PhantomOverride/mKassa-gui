@@ -39,6 +39,11 @@ body, input[text], button {
 	margin:0px;
 	padding:0.5em;
 	width:30%;
+	/*
+	Uncomment and comment float:right to fix component to right side.
+	position:fixed;
+	right:0px;
+	*/
 }
 
 #container-product-detail {

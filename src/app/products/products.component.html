@@ -1,4 +1,4 @@
-  <div id="container-products">
+<div id="container-products">
   <div class="product-tile" *ngFor="let product of products" (click)="onSelect(product)" [class.selected]="product === selectedProduct">
   		<div>
     	<span class="product-tile-name">{{product.name}}</span>

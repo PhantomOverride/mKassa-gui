@@ -18,6 +18,14 @@
 
 <div *ngIf="stageShop==true">
 	<div *ngIf="products">
+		<div class="cart-sticky">
+			<div class="payment-button" (click)="initCheckout()">
+				<span>Checkout</span>
+			</div>
+			<div>
+				<div class="cart-sum">Total: {{this.sum}}</div>
+			</div>
+		</div>
 		<div class="payment-button" (click)="initCheckout()">
 			<span>Checkout</span>
 		</div>
