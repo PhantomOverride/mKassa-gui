@@ -1,0 +1,14 @@
+<div class="container-summary">
+	<div class="product-summary">
+		<div class="product-item" *ngFor="let product of resolved_products">
+			<span>Product Name: {{product.name}}</span><br>
+			<span>Cost: {{product.price}}kr</span><br>
+			<span>Number sold: {{product.sold}}</span><br>
+			<span>Total: {{product.price * product.sold}}</span>
+		</div>
+	</div>
+	<div class="money-summary">
+		<span>Paid via Card: {{totalCard}}</span><br>
+		<span>Paid via Cash: {{totalCash}}</span>
+	</div>
+</div>

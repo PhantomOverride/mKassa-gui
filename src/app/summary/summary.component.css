@@ -1,0 +1,22 @@
+.product-item{
+	background-color: lightgray;
+	margin:0.5em;
+	padding:1em;
+	max-width:30em;
+	color:black;
+}
+
+.product-summary{
+	float:left;
+	max-width:60%;
+}
+
+.money-summary{
+	background-color: lightgray;
+	margin:0.5em;
+	padding:1em;
+	max-width:30em;
+	color:black;
+	float:right;
+	max-width:40%;
+}
