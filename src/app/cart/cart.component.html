@@ -26,12 +26,7 @@
 				<div class="cart-sum">Total: {{this.sum}}</div>
 			</div>
 		</div>
-		<div class="payment-button" (click)="initCheckout()">
-			<span>Checkout</span>
-		</div>
-		<div>
-			<div class="cart-sum">Total: {{this.sum}}</div>
-		</div>
+		<div class="cart-spacer"></div>
 		<div *ngFor="let product of products">
 			<div class="cart-item">
 				<span class="cart-item-name">{{product.name}}</span>

@@ -47,6 +47,10 @@
 	color: black;
 }
 
+.cart-spacer{
+	height:8.6em;
+}
+
 .payment-method-button {
 	display:block;
 	color:black;
