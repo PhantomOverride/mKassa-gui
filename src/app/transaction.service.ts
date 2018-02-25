@@ -29,4 +29,8 @@ export class TransactionService {
   	return this.http.post<Transaction>(this.transactionsUrl,t).subscribe();
   }
 
+  updateTransaction(t) {
+    return this.http.put<Transaction>(this.transactionsUrl + "/" + t._id,t).subscribe();
+  }
+
 }

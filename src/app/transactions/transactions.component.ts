@@ -68,10 +68,24 @@ export class TransactionsComponent implements OnInit, DoCheck {
   	return new Product();
   }
 
-
+  reject(transaction){
+    //alert("reject");
+    if( confirm("Really mark this transaction as Rejected?\n\nOnly reject transactions that nerver happened or were refunded to the customer. This action can not be un-done.")){
+      transaction.rejected = true;
+      var m = "";
+      while(m==="" || m===null){
+        m = prompt("Why should this transaction be rejected?");
+      }
+      var d = new Date();
+      m = d.toUTCString() + " - " + m;
+      transaction.rejected_message = m;
+      this.transactionService.updateTransaction(transaction);
+    }
+  }
 
   print(transaction){
-  console.log(transaction);
+    //alert("print");
+    //console.log(transaction);
     //console.log("Printing...?")
     var t = new Transaction();
     t._id = transaction._id;

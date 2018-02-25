@@ -6,4 +6,6 @@ export class Transaction {
   amountPaid: number;
   products: Product[];
   Created_date: string;
+  rejected: boolean;
+  rejected_message: string;
 }

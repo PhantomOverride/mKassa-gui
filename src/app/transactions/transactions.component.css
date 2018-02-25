@@ -38,6 +38,10 @@
 	
 }
 
+.reject {
+	background-color: pink;
+}
+
 .transaction-id{
 	display:block;
 	background-color:#ddd;
