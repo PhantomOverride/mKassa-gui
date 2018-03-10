@@ -1,5 +1,8 @@
 <div *ngIf="stageConfirm==true">
 	<div class="cart-confirmation">
+		<div>
+			<div class="cart-sum">Total: {{this.sum}}</div>
+		</div>
 		<div class="payment-method-button accept-button" (click)="checkout()">Confirm</div>
 		<div class="payment-method-button abort-button" (click)="initCheckout()">Back</div>
 	</div>
