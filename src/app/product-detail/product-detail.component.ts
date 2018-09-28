@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 
 //import { Product } from '../product';
 
@@ -20,8 +20,11 @@ import { ProductService } from '../product.service';
 })
 export class ProductDetailComponent implements OnInit {
 
-  @Input() product: Product;
-  @Input() edit:    boolean;
+  @Input()  product: Product;
+  @Input()  edit:    boolean;
+
+  @Output() addProduct    = new EventEmitter<Product>();
+  @Output() removeProduct = new EventEmitter<Product>();
 
   constructor(private productService: ProductService) { }
 
@@ -30,8 +33,11 @@ export class ProductDetailComponent implements OnInit {
 
   createNewProduct() {
     console.log("Creating new product");
-    var response = this.productService.createProduct(this.product);
-    console.log(response);
+    this.productService.createProduct(this.product)
+      .subscribe(product => {
+        console.log(product)
+        this.addProduct.emit(product)
+      });
   }
 
   reset() {
@@ -42,15 +48,23 @@ export class ProductDetailComponent implements OnInit {
 
   update(){
     console.log("Update product");
-    var response = this.productService.putProduct(this.product);
+    var response = this.productService.putProduct(this.product)
+      .subscribe(product => {
+        console.log(product);
+        this.removeProduct.emit(this.product);
+        this.addProduct.emit(product);
+      });
     console.log(response);
   }
 
   delete(){
   	if( confirm("Really delete the product '" + this.product.name + "'?") ){
-  		var r = this.productService.deleteProduct(this.product);
+  		this.productService.deleteProduct(this.product)
+        .subscribe(product => {
+          console.log("Removed product");
+          console.log(this.product);
+          this.removeProduct.emit(this.product);
+        });
   	}
-    console.log("Removed product");
-  	//location.reload(); Reloading breaks the removal of product
   }
 }

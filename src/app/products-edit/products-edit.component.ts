@@ -29,5 +29,11 @@ export class ProductsEditComponent implements OnInit {
   	this.selectedProduct = product;
     this.edit = true;
   }
+  onAdded(product: Product): void {
+    this.products.push(product);
+  }
+  onRemove(product: Product): void {
+    this.products = this.products.filter(obj => obj._id != product._id);
+  }
 
 }

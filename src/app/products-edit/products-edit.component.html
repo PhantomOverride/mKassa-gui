@@ -10,5 +10,11 @@
 </div>
 
 <div id="container-product-detail">
-<app-product-detail [product]="selectedProduct" [edit]="edit"></app-product-detail>
+<app-product-detail
+  [product]="selectedProduct"
+  [edit]="edit"
+  (addProduct)="onAdded($event)"
+  (removeProduct)="onRemove($event)"
+>
+</app-product-detail>
 </div>
