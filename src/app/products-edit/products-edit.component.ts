@@ -11,8 +11,8 @@ import { ProductService } from '../product.service';
 export class ProductsEditComponent implements OnInit {
 
   products: Product[];
-  selectedProduct: Product;
-  //cart: Product[];
+  selectedProduct: Product = new Product();
+  edit: boolean = false;
 
   constructor(private productService: ProductService) { }
 
@@ -27,6 +27,13 @@ export class ProductsEditComponent implements OnInit {
 
   onSelect(product: Product): void {
   	this.selectedProduct = product;
+    this.edit = true;
+  }
+  onAdded(product: Product): void {
+    this.products.push(product);
+  }
+  onRemove(product: Product): void {
+    this.products = this.products.filter(obj => obj._id != product._id);
   }
 
 }

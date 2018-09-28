@@ -1,41 +1,25 @@
-<div *ngIf="product">
-	<h2>{{ product.name | uppercase }} Details</h2>
+<div>
+	<h2 *ngIf="edit">{{product.name}} edit</h2>
+	<h2 *ngIf="!edit">New product</h2>
 
-	<div class="save-button" (click)="save()">
-			<span class="save-text">Save</span>
-	</div>
+	<label for="name"> Name </label>
+	<input [(ngModel)]="product.name" name="name" placeholder="name">
+	<br>
 
-	<div><span>id: </span>{{product._id}}</div>
-	<div>
-		<div class="attribute">
-	  <label>Name:
-	    <input [(ngModel)]="product.name" placeholder="name">
-	  </label>
-	</div>
+	<label for="price"> Price </label>
+	<input [(ngModel)]="product.price" name="price" placeholder="555">
+	<br>
 
-	<div class="attribute">
-	  <label>Price:
-	    <input [(ngModel)]="product.price" placeholder="9001">
-	  </label>
-	</div>
+	<label for="category"> Category </label>
+	<input [(ngModel)]="product.category" name="category" placeholder="none">
+	<br>
 
-	<div class="attribute">
-	  <label>Image URL:
-	    <input [(ngModel)]="product.imageUrl" placeholder="/assets/products/sample.png">
-	  </label>
-	  </div>
+	<label for="image"> Image URL </label>
+	<input [(ngModel)]="product.imageUrl" name="image" placeholder="http://example.com">
+	<br>
 
-
-	  <div class="attribute">
-	  <label>Category:
-	    <input [(ngModel)]="product.category" placeholder="None">
-	  </label>
-	</div>
-	<div class="delete-button" (click)="delete()">
-		Delete Product
-	</div>
-	</div>
-</div>
-<div class="add-button" (click)="add()">
-		New Product
-</div>
+	<button *ngIf="!edit" (click)="createNewProduct()">	Upload new product</button>
+	<button *ngIf="edit"	(click)="update()">						Update</button>
+	<button *ngIf="edit" 	(click)="reset()">						Create new product</button>
+	<button *ngIf="edit" 	(click)="delete()">						Delete</button>
+<!-- </div> -->

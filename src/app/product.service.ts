@@ -27,15 +27,15 @@ export class ProductService {
   }
 
   createProduct(p){
-    return this.http.post<Product>(this.productsUrl, p).subscribe();
+    return this.http.post<Product>(this.productsUrl, p);
   }
 
   putProduct(p) {
-    return this.http.put<Product>(this.productsUrl + "/" + p._id, p).subscribe();
+    return this.http.put<Product>(this.productsUrl + "/" + p._id, p);
   }
 
   deleteProduct(p) {
-    return this.http.delete<Product>(this.productsUrl + "/" + p._id, p).subscribe();
+    return this.http.delete<Product>(this.productsUrl + "/" + p._id, p);
   }
 
   postTransaction(t) {
