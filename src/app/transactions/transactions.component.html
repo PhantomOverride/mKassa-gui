@@ -1,28 +1,45 @@
 <div class="row">
+	<div class="col-12 col-md-8 col-xl-9">
 
-	<div class="col-6 col-xl-2" *ngFor="let transaction of transactions">
 		<div class="row">
-			<span class="transaction-date">{{transaction.Created_date}}</span>
-			<span class="transaction-amountPaid">{{transaction.amountPaid}}kr</span>
-			<span class="transaction-method">{{transaction.paymentMethod}}</span>
-		</div>
-
-		<div class="col-12" *ngFor="let product of transaction.products">
-			<span>{{getProductById(product).name}}</span>
-		</div>
-		<span class="col12">{{transaction._id}}</span>
-		<div *ngIf="transaction.rejected==true">
-			<div class="reject">
-				---------- REJECTED ----------<br><br>
-				{{transaction.rejected_message}}
-				<br><br>---------- REJECTED ----------
-			</div>
-		</div>
-		<div *ngIf="transaction.rejected==false">
-			<div class="reject" (click)="reject(transaction)">
-				Reject Transaction
-			</div>
+			<span class="col-3">ID								</span>
+			<span class="col-3">Transaction Date	</span>
+			<span class="col-3">Amount						</span>
+			<span class="col-3">Paymen Method			</span>
 		</div>
 	</div>
 
+	<hr class="col-12">
+
+	<div 	class="col-12 active table-color hover"
+				*ngFor="let transaction of transactions"
+	>
+		<div 	class="row"
+					[ngClass]="{'bg-danger': transaction.rejected}"
+					data-toggle="collapse"
+					[attr.data-target]="'#collapseTrans'+ transaction._id"
+		>
+			<span class="col-3">{{transaction._id}}</span>
+			<!-- <a class="col-3" data-toggle="collapse" href="#collapseTrans{{transaction._id}}">{{transaction._id}}</a> -->
+			<span class="col-3">{{transaction.Created_date}}	</span>
+			<span *ngIf="!transaction.rejected" class="col-3">{{transaction.amountPaid}}		</span>
+			<span *ngIf="!transaction.rejected" class="col-3">{{transaction.paymentMethod}}	</span>
+			<span class="col-6" *ngIf="transaction.rejected==true">REJECTED</span>
+			<div class="col-12 collapse" id="collapseTrans{{transaction._id}}">
+				<div class="row">
+					<span class="col-12">{{transaction.rejected_message}}</span>
+					<span class="col-12" *ngFor="let product of transaction.products">
+						{{getProductById(product).name}}
+					</span>
+					<button class="btn btn-danger"
+									(click)="reject(transaction)"
+									*ngIf="!transaction.rejected"
+					>
+						Reject transaction
+					</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>
