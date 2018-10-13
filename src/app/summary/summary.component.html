@@ -1,29 +1,59 @@
-<!-- <div class="container-summary">
-	<div class="product-summary">
-		<div class="product-item" *ngFor="let product of resolved_products">
-			<span>Product Name: {{product.name}}</span><br>
-			<span>Cost: {{product.price}}kr</span><br>
-			<span>Number sold: {{product.sold}}</span><br>
-			<span>Total: {{product.price * product.sold}}</span>
-		</div>
-	</div>
-	<div class="money-summary">
-		<span>Paid via Card: {{totalCard}}</span><br>
-		<span>Paid via Cash: {{totalCash}}</span>
-	</div>
-</div> -->
-
 <div class="row">
-	<div class="col-6 product-summary">
-		<div class="product-item" *ngFor="let product of resolved_products">
-			<span>Product Name: {{product.name}}</span><br>
-			<span>Cost: {{product.price}}kr</span><br>
-			<span>Number sold: {{product.sold}}</span><br>
-			<span>Total: {{product.price * product.sold}}</span>
+
+	<div class="col-6">
+		<div class="row">
+			<h1 class="col-12">Total summary</h1>
+			<table class="table table-striped col-12">
+				<tr>
+					<th>Paid via card</th>
+					<td>{{totalCard}}</td>
+				</tr>
+				<tr>
+					<th>Paid via cash</th>
+					<td>{{totalCash}}</td>
+				</tr>
+				<tr>
+					<th>Total</th>
+					<td>{{totalCash + totalCard}}</td>
+				</tr>
+			</table>
 		</div>
 	</div>
-	<div class="col-6 money-summary">
-		<span>Paid via Card: {{totalCard}}</span><br>
-		<span>Paid via Cash: {{totalCash}}</span>
+
+	<div class="col-6">
+		<div class="row">
+			<h1 class="col-12">miscellaneous data</h1>
+			<table class="table table-striped col-12">
+				<tr>
+					<th>Number of transactions</th>
+					<td>Not yet implemented :)</td>
+				</tr>
+			</table>
+		</div>
 	</div>
+
+	<div class="col-6">
+		<div class="row">
+			<h1>Sales Summary</h1>
+			<table class="table table-striped col-12">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Price</th>
+						<th>Amount sold</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let product of resolved_products">
+						<th>{{product.name}}</th>
+						<td>{{product.price}}</td>
+						<td>{{product.sold}}</td>
+						<td>{{product.price * product.sold}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
 </div>
