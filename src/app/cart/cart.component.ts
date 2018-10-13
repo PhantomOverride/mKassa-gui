@@ -63,9 +63,8 @@ export class CartComponent implements OnInit, DoCheck {
     var datas = this.buildReceipt("Kundens Exemplar", t, t.products);
     this.printReceipt(datas);
   	var r = this.productService.postTransaction(t);
-  	
+
   	this.products.splice(0,999);
-  	this.initShopping();
   }
 
   buildReceipt(exemplar, transaction, products) {
@@ -225,31 +224,7 @@ export class CartComponent implements OnInit, DoCheck {
 
   setPayment(type){
   	this.paymentMethod = type;
-  }
-
-  initAbort(){
-  	this.stageCheckout = false;
-  	this.stageShop = true;
-  	this.stageConfirm = false;
-  }
-
-  initCheckout(){
-  	this.stageCheckout = true;
-  	this.stageShop = false;
-  	this.stageConfirm = false;
-    window.scrollTo(0, 0);
-  }
-
-  initConfirm(){
-  	this.stageCheckout = false;
-  	this.stageShop = false;
-  	this.stageConfirm = true;
-  }
-
-  initShopping(){
-  	this.stageCheckout = false;
-  	this.stageShop = true;
-  	this.stageConfirm = false;
+    this.checkout();
   }
 
 }
