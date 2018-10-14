@@ -28,6 +28,7 @@ export class ProductsEditComponent implements OnInit {
   onSelect(product: Product): void {
   	this.selectedProduct = product;
     this.edit = true;
+    console.log(this.edit);
   }
   onAdded(product: Product): void {
     this.products.push(product);

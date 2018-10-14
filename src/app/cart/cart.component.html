@@ -1,41 +1,21 @@
-<div *ngIf="stageConfirm==true">
-	<div class="cart-confirmation">
-		<div>
-			<div class="cart-sum">Total: {{this.sum}}</div>
-		</div>
-		<div class="payment-method-button accept-button" (click)="checkout()">Confirm</div>
-		<div class="payment-method-button abort-button" (click)="initCheckout()">Back</div>
-	</div>
-</div>
+<div>
+	<span class="col-12 display-4">Total: {{this.sum}}</span>
+	<button class="col-12 btn btn-primary mb-1"
+					(click)="setPayment('card')"
+					*ngIf="this.sum != 0"
+					>
+					Card
+	</button>
+	<button class="col-12 btn btn-secondary"
+					(click)="setPayment('cash')"
+					*ngIf="this.sum != 0"
+					>
+					Cash
+	</button>
 
-<div *ngIf="stageCheckout==true">
-	<div class="cart-payment-method">
-		<div>
-			<div class="cart-sum">Total: {{this.sum}}</div>
-		</div>
-		<div class="method-card payment-method-button" (click)="setPayment('card'); initConfirm()">Card</div>
-		<div class="method-cash payment-method-button" (click)="setPayment('cash'); initConfirm()">Cash</div>
-		<div class="abort-button payment-method-button" (click)="initShopping()">Back</div>
-	</div>
-</div>
-
-<div *ngIf="stageShop==true">
-	<div *ngIf="products">
-		<div class="cart-sticky">
-			<div class="payment-button" (click)="initCheckout()">
-				<span>Checkout</span>
-			</div>
-			<div>
-				<div class="cart-sum">Total: {{this.sum}}</div>
-			</div>
-		</div>
-		<div class="cart-spacer"></div>
-		<div *ngFor="let product of products">
-			<div class="cart-item">
-				<span class="cart-item-name">{{product.name}}</span>
-		    	<span class="cart-item-remove" (click)="removeItem(product)">[X]</span>
-		    	<span class="cart-item-price">{{product.price}}kr</span>
-	    	</div>
-		</div>
+	<div class="col-12 row table-color hover" *ngFor="let product of products">
+		<span class="col-4"> {{product.name}}</span>
+		<span class="col-2"> {{product.price}}</span>
+		<a class="col-6" (click)="removeItem(product)">Remove product</a>
 	</div>
 </div>
