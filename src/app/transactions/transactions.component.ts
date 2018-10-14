@@ -19,7 +19,7 @@ import hextorstr from 'jsrsasign';
 export class TransactionsComponent implements OnInit, DoCheck {
 
 	transactions: Transaction[];
-	selectedTransaction: Transaction;
+	selectedTransaction: Transaction = new Transaction();
 	products: Product[];
 
   constructor(private transactionService: TransactionService, private productService: ProductService) { }
@@ -45,7 +45,7 @@ export class TransactionsComponent implements OnInit, DoCheck {
   	}
   }
 
-  
+
 
   getTransactions(): void {
   	this.transactionService.getTransactions()
@@ -58,7 +58,7 @@ export class TransactionsComponent implements OnInit, DoCheck {
   }
 
   getProductById(id){
-  if(!!this.products){
+    if(!!this.products){
 	  	for (var i = 0; i < this.products.length; i++){
 	  		if(this.products[i]._id == id){
 	  			return this.products[i];
@@ -93,7 +93,7 @@ export class TransactionsComponent implements OnInit, DoCheck {
     t.Created_date = transaction.Created_date
     t.products = []//new Product[transaction.products.length];
 
-    for (var i = 0; i < transaction.products.length; i++) { 
+    for (var i = 0; i < transaction.products.length; i++) {
         t.products[i] = this.getProductById(transaction.products[i]);
     }
 
@@ -248,7 +248,7 @@ export class TransactionsComponent implements OnInit, DoCheck {
       window.setTimeout(function(){
         qz.websocket.disconnect();
       },1000);
-      
+
   }
 
 

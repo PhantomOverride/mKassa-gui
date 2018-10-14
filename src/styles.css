@@ -1,70 +1,25 @@
-/* Application-wide Styles */
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+:root{
+  --main-color: rgb(148, 174, 251);
 }
-h2, h3 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+.fixed-right{
+  position: fixed;
+  right: 0px;
+  height: 100%;
+  overflow-y: auto;
 }
-body {
-  margin: 0.5em;
+.fixed-right::-webkit-scrollbar{
+  /* Not working in firefox, have not found a replacement to get it working in fx */
+  display: none;
 }
-body, input[text], button {
-  color: #888;
-  font-family: Cambria, Georgia;
+.table-color:nth-child(odd) {
+  background: rgb(210, 220, 251);
 }
-/* everywhere else */
-* {
-  font-family: Arial, Helvetica, sans-serif;
+.hover:hover {
+  background: var(--main-color);
 }
-
-#container {
-	margin:0px;
-	padding:0px;
+.hidden {
+  display: none;
 }
-
-#container-products {
-	margin:0px;
-	padding:0px;
-	width:70%;
-	float:left;
-}
-
-#container-cart {
-	float:right;
-	box-sizing: border-box;
-	margin:0px;
-	padding:0.5em;
-	width:30%;
-	/*
-	Uncomment and comment float:right to fix component to right side.
-	position:fixed;
-	right:0px;
-	*/
-}
-
-#container-product-detail {
-	float:right;
-	box-sizing: border-box;
-	margin:0px;
-	padding:0.5em;
-	width:30%;
-}
-
-#header {
-	background-color: #ddd;
-	padding:1em;
-}
-
-#header a{
-	text-decoration: none;
-	margin-left:1em;
-}
-
-#header h2{
-	display: inline;
-	margin-right:1em;
+.hidden:focus {
+  display: block;
 }

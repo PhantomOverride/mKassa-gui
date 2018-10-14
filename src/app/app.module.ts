@@ -29,7 +29,7 @@ import { SummaryComponent } from './summary/summary.component';
     CartComponent,
     TransactionsComponent,
     ProductsEditComponent,
-    SummaryComponent
+    SummaryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 
 //import { Product } from '../product';
 
@@ -20,53 +20,51 @@ import { ProductService } from '../product.service';
 })
 export class ProductDetailComponent implements OnInit {
 
-  @Input() product: Product;
+  @Input()  product: Product;
+  @Input()  edit:    boolean;
+
+  @Output() addProduct    = new EventEmitter<Product>();
+  @Output() removeProduct = new EventEmitter<Product>();
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
   }
 
+  createNewProduct() {
+    console.log("Creating new product");
+    this.productService.createProduct(this.product)
+      .subscribe(product => {
+        console.log(product)
+        this.addProduct.emit(product)
+      });
+  }
+
+  reset() {
+    console.log("Reseting product for new a product");
+    this.product  = new Product();
+    this.edit     = false;
+  }
+
+  update(){
+    console.log("Update product");
+    var response = this.productService.putProduct(this.product)
+      .subscribe(product => {
+        console.log(product);
+        this.removeProduct.emit(this.product);
+        this.addProduct.emit(product);
+      });
+    console.log(response);
+  }
+
   delete(){
   	if( confirm("Really delete the product '" + this.product.name + "'?") ){
-  		var r = this.productService.deleteProduct(this.product);
-  	}
-  	location.reload();
-  }
-
-  add(){
-  	if ( confirm("Really insert a new empty product?") ){
-  		this.insertNewProduct();
-  		location.reload();
+  		this.productService.deleteProduct(this.product)
+        .subscribe(product => {
+          console.log("Removed product");
+          console.log(this.product);
+          this.removeProduct.emit(this.product);
+        });
   	}
   }
-
-  insertNewProduct(){
-  	var p = new Product;
-  	p.name = "New Product";
-  	p.price = 0;
-  	p.imageUrl = "/assets/products/sample.png";
-  	p.category = "None";
-
-  	this.productService.createProduct(p);
-
-  }
-
-  save(){
-  	alert("Saving...");
-  	var r = this.productService.putProduct(this.product);
-  	location.reload();
-  	
-  /*
-  	var t = new Transaction();
-  	t.paymentMethod = this.paymentMethod;
-  	t.amountPaid = this.sum;
-  	t.products = this.products;
-  	var r = this.productService.postTransaction(t);
-  	
-  	this.products.splice(0,999);
-  	this.initShopping();
-  	*/
-  }
-
 }

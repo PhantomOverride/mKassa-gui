@@ -1,41 +1,59 @@
-<div *ngIf="product">
-	<h2>{{ product.name | uppercase }} Details</h2>
+<!-- <div>
+	<h2 *ngIf="edit">{{product.name}} edit</h2>
+	<h2 *ngIf="!edit">New product</h2>
 
-	<div class="save-button" (click)="save()">
-			<span class="save-text">Save</span>
+	<label for="name"> Name </label>
+	<input [(ngModel)]="product.name" name="name" placeholder="name">
+	<br>
+
+	<label for="price"> Price </label>
+	<input [(ngModel)]="product.price" name="price" placeholder="555">
+	<br>
+
+	<label for="category"> Category </label>
+	<input [(ngModel)]="product.category" name="category" placeholder="none">
+	<br>
+
+	<label for="image"> Image URL </label>
+	<input [(ngModel)]="product.imageUrl" name="image" placeholder="http://example.com">
+	<br>
+
+	<button *ngIf="!edit" (click)="createNewProduct()">	Upload new product</button>
+	<button *ngIf="edit"	(click)="update()">						Update</button>
+	<button *ngIf="edit" 	(click)="reset()">						Create new product</button>
+	<button *ngIf="edit" 	(click)="delete()">						Delete</button>
+</div> -->
+
+<div>
+	<div class="col-12">
+		<h2 *ngIf="edit">{{product.name}} edit</h2>
+		<h2 *ngIf="!edit">New product</h2>
 	</div>
 
-	<div><span>id: </span>{{product._id}}</div>
-	<div>
-		<div class="attribute">
-	  <label>Name:
-	    <input [(ngModel)]="product.name" placeholder="name">
-	  </label>
+	<div class="form-group">
+		<label for="name"> Name </label>
+		<input class="form-control" [(ngModel)]="product.name" name="name" placeholder="name">
 	</div>
 
-	<div class="attribute">
-	  <label>Price:
-	    <input [(ngModel)]="product.price" placeholder="9001">
-	  </label>
+	<div class="form-group">
+		<label for="price"> Price </label>
+		<input class="form-control" [(ngModel)]="product.price" name="price" placeholder="555">
 	</div>
 
-	<div class="attribute">
-	  <label>Image URL:
-	    <input [(ngModel)]="product.imageUrl" placeholder="/assets/products/sample.png">
-	  </label>
-	  </div>
+	<div class="form-group">
+		<label for="category"> Category </label>
+		<input class="form-control" [(ngModel)]="product.category" name="category" placeholder="none">
+	</div>
 
+	<div class="form-group">
+		<label for="image"> Image URL </label>
+		<input class="form-control" [(ngModel)]="product.imageUrl" name="image" placeholder="http://example.com">
+	</div>
 
-	  <div class="attribute">
-	  <label>Category:
-	    <input [(ngModel)]="product.category" placeholder="None">
-	  </label>
-	</div>
-	<div class="delete-button" (click)="delete()">
-		Delete Product
-	</div>
-	</div>
-</div>
-<div class="add-button" (click)="add()">
-		New Product
+	<h1>{{edit}}</h1>
+
+	<button class="col-12 btn btn-success" *ngIf="!edit" 	(click)="createNewProduct()">	Upload new product</button>
+	<button class="col-12 btn btn-success" *ngIf="edit"		(click)="update()">						Update						</button>
+	<button class="col-12 btn btn-warning" *ngIf="edit" 	(click)="reset()">						Create new product</button>
+	<button class="col-12 btn btn-danger"  *ngIf="edit" 	(click)="delete()">						Delete						</button>
 </div>
