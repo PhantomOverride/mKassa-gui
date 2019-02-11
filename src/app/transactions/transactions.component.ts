@@ -87,12 +87,39 @@ export class TransactionsComponent implements OnInit, DoCheck {
     }
   }
 
-  print(transaction){
-    console.log("Print transaction")
-    console.log(transaction);
-    this.recipeService.recipes.next({
-      recipe: "ASDASD"
-    });
+  print_transaction(transaction){
+    console.log("Print transaction", transaction);
+    let recipe = this.build_transaction(transaction);
+    this.send_transaction(recipe);
   }
 
+  build_transaction(transaction){
+    let recipe = {
+      date:     transaction.Created_date,
+      id:       transaction._id,
+      sum:      transaction.amountPaid,
+      products: this.list_products_name_price(transaction.products),
+      method:   transaction.paymentMethod
+    };
+
+    return recipe;
+  }
+
+  list_products_name_price(products: Product[]){
+    let names = products.map(v => this.product_and_price(v));
+    return names;
+  }
+  product_and_price(product: Product){
+    let p = this.getProductById(product)
+    return {
+      name: p.name,
+      price: p.price
+    }
+  }
+
+  send_transaction(recipe){
+    this.recipeService.recipes.next({
+      data: JSON.stringify(recipe)
+    });
+  }
 }
